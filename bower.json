@@ -1,0 +1,21 @@
+{
+  "name": "threeJs",
+  "version": "0.0.0",
+  "homepage": "https://github.com/koenvg/threeJs-pluralsight-course",
+  "authors": [
+    "koen <koen.van.geert@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "threejs": "*"
+  }
+}
