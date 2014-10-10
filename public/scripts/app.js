@@ -1,3 +1,9 @@
+/**
+ * Summary
+ * All three.js applications contain a renderer, scene, camera & light
+ * common issues: it's behind u, there is no light to see it, scale it up dude
+**/
+
 var example = (function() {
   "use strict";
 
@@ -5,7 +11,8 @@ var example = (function() {
   renderer = window.WebGLRenderingContext ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer(),//Checks if the browser supports WebGLrendering.
   light = new THREE.AmbientLight(0xffffff),
   camera,
-  box;
+  box,
+  stats;
 
   function initScene(){
     renderer.setSize( window.innerWidth, window.innerHeight);
@@ -28,22 +35,34 @@ var example = (function() {
     scene.add(camera);
 
     box = new THREE.Mesh(
-      new THREE.BoxGeometry(20,20,20),
-      new THREE.MeshBasicMaterial({color: 0xFF0000})
+      //new THREE.BoxGeometry(20,20,20),
+      new THREE.SphereGeometry(15,14,14),
+      new THREE.MeshBasicMaterial({color: 0xFF0000, wireframe: true})
     );
 
     box.name = "box";
 
     scene.add(box);
 
+    //Add the stats to the scene
+    stats = new Stats();
+    stats.setMode(0);
+
+    stats.domElement.style.position =  'absolute';
+    stats.domElement.style.left = '0px';
+    stats.domElement.style.top = '0px';
+    document.body.appendChild(stats.domElement);
+
     render();
   }
 
   function render(){
-    box.rotation.y += 0.01;
-    
+    box.rotation.y += 0.001;
+
     renderer.render(scene, camera);
     requestAnimationFrame(render);
+
+    stats.update();
   }
 
   window.onload = initScene;
