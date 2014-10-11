@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "threejs": "*",
-    "stats.js": "*"
+    "stats.js": "*",
+    "threex-colladaloader": "~0.0.1"
   }
 }
